@@ -1,21 +1,23 @@
 
-public class CustomLinkedListA<Item> {
+public class CustomStackA<Item> {
 	private Item[] stack;
 	private int N = 0;
 	
 	public static void main(String[] args) {
-		CustomLinkedListA stack = new CustomLinkedListA(10);
+		CustomStackA stack = new CustomStackA(10);
 		stack.push("abcc");
 		stack.push("ASDsad");
 		stack.push("asdcc");
 		stack.push("dasdDsad");
+		stack.peek();
+		System.out.println(stack.peek());
 		System.out.println(stack.pop());
 		System.out.println(stack.pop());
 		System.out.println(stack.pop());
 		System.out.println(stack.pop());
 	}
 	
-	public CustomLinkedListA(int capacity){
+	public CustomStackA(int capacity){
 		stack = (Item[])new Object[capacity];
 	}
 	
@@ -30,5 +32,10 @@ public class CustomLinkedListA<Item> {
 	
 	public boolean isEmpty(){
 		return N==0;
+	}
+	
+	public Item peek(){
+		
+		return stack[N -1];
 	}
 }
