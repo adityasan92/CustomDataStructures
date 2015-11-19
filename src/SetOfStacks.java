@@ -5,12 +5,26 @@ public class SetOfStacks<Item> {
 	int top = 0; 
 	public void push(Item item){
 		CustomStackA<Item> last = stacks.get(top);
-		Item topElement = last.peek();		
+		//Item topElement = last.peek();
+		if(!last.isFull()){
+			last.push(item);
+		}else{
+			top = top+1; 
+			//last = stacks.get(top);
+			last.push(item);
+		}
+		
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 	}
+	
+	//public Stack getLastStack(){
+			
+		
+		//return Stack; 
+	//}
 
 }

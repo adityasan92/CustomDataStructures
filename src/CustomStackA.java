@@ -2,7 +2,7 @@
 public class CustomStackA<Item> {
 	private Item[] stack;
 	private int N = 0;
-	
+	private int capacity; 
 	public static void main(String[] args) {
 		CustomStackA stack = new CustomStackA(10);
 		stack.push("abcc");
@@ -19,6 +19,7 @@ public class CustomStackA<Item> {
 	
 	public CustomStackA(int capacity){
 		stack = (Item[])new Object[capacity];
+		capacity= this.capacity; 
 	}
 	
 	public void push(Item a){
@@ -32,6 +33,14 @@ public class CustomStackA<Item> {
 	
 	public boolean isEmpty(){
 		return N==0;
+	}
+	
+	public boolean  isFull(){
+		if(capacity <= N-1 ){
+			return true; 
+		}
+		
+		return false; 
 	}
 	
 	public Item peek(){
