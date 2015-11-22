@@ -10,13 +10,15 @@ public class BinarySearchTree {
 		bt.insert(16,"New World");
 		bt.insert(3,"ok game");
 		bt.insert(5,"game");
-		bt.insert(4,"four");
-		bt.insert(2,"four");
+		bt.insert(20,"game");
+		bt.insert(8,"game");
+		//bt.insert(4,"four");
+		//bt.insert(2,"four");
 		//Node rootNode = bt.getRoot();
 		//String searchValue = bt.findParent(15);
 		int succesor = bt.findSuccesor(6);
-		System.out.println(succesor);
-		bt.postOrder();
+		//System.out.println(succesor);
+		System.out.println(bt.isBalanced());
 	}
 	
 	public Node insertR(Node root, int key, String value){
@@ -138,6 +140,40 @@ public class BinarySearchTree {
 	
 	public Node getRoot(){
 		return rootNode; 
+	}
+	
+	public boolean isBalanced(){
+		
+		if(checkHeight(rootNode) == -1){
+			return false; 
+		}
+		return true; 
+	}
+	
+	private int checkHeight(Node node){
+		
+		if(node == null){
+			return 0; 
+		}
+		
+		int leftHeight = checkHeight(node.leftChild);	
+		if(leftHeight  == -1){
+			return -1;
+		}
+		
+		int rightHeight = checkHeight(node.rightChild);
+		if(rightHeight == -1){
+			return -1;
+		}
+		
+		int heightDiff = Math.abs(leftHeight - rightHeight); 
+		
+		if(heightDiff > 1){
+			return -1; 
+		}else{
+			return Math.max(leftHeight, rightHeight)+ 1; 
+		}
+	
 	}
 	
 	/*public boolean isBst(){
