@@ -16,6 +16,7 @@ public class BinarySearchTree {
 		//String searchValue = bt.findParent(15);
 		int succesor = bt.findSuccesor(6);
 		System.out.println(succesor);
+		bt.postOrder();
 	}
 	
 	public Node insertR(Node root, int key, String value){
@@ -137,6 +138,64 @@ public class BinarySearchTree {
 	
 	public Node getRoot(){
 		return rootNode; 
+	}
+	
+	/*public boolean isBst(){
+		
+		return isBst(rootNode);
+	}
+	
+	private boolean isBst(Node root){
+		
+		if(root.rightChild == null){
+			return root;
+		}
+		
+	}*/
+	
+	public void inOrder(){
+		inOrder(rootNode);
+	}
+	
+	private Node inOrder(Node node){
+		
+		if(node == null){
+			return node; 
+		}
+		inOrder(node.leftChild);
+		System.out.println(node.key);
+		inOrder(node.rightChild);
+		return node; 
+	}
+	
+	public void preOrder(){
+		preOrder(rootNode);
+	}
+	
+	private Node preOrder(Node node){
+		
+		if(node == null){
+			return node; 
+		}
+		System.out.println(node.key);
+		preOrder(node.leftChild);
+		preOrder(node.rightChild);
+		return node; 
+	}
+	
+	public void postOrder(){
+		postOrder(rootNode);
+	}
+	
+	private Node postOrder(Node node){
+		
+		if(node == null){
+			return node; 
+		}
+		postOrder(node.leftChild);
+		postOrder(node.rightChild);
+		System.out.println(node.key);
+		return node; 
 	}
 	
 	private class Node{
