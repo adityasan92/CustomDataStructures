@@ -5,14 +5,17 @@ public class BinarySearchTree {
 	
 	public static void main(String[] args){
 		BinarySearchTree bt = new BinarySearchTree();
-		bt.insert(10,"Hello World");
-		bt.insert(15,"I am god");
-		bt.insert(1,"New World");
-		bt.insert(4,"game");
-		bt.insert(3,"game");
+		bt.insert(12,"Hello World");
+		bt.insert(6,"I am god");
+		bt.insert(16,"New World");
+		bt.insert(3,"ok game");
+		bt.insert(5,"game");
+		bt.insert(4,"four");
+		bt.insert(2,"four");
 		//Node rootNode = bt.getRoot();
-		String searchValue = bt.find(15);
-		System.out.println(searchValue);
+		//String searchValue = bt.findParent(15);
+		int succesor = bt.findSuccesor(6);
+		System.out.println(succesor);
 	}
 	
 	public Node insertR(Node root, int key, String value){
@@ -27,9 +30,11 @@ public class BinarySearchTree {
 		}
 		if(root.key <key){	
 			root.rightChild = insertR(root.rightChild,key,value);
+			root.rightChild.parent = root;  
 			//System.out.println(news.value);
 		}else if(root.key > key){
 			root.leftChild = insertR(root.leftChild,key,value);	
+			root.leftChild.parent = root;  
 			//System.out.println(news.value);
 		}else{
 			root.value = value; 
@@ -54,10 +59,14 @@ public class BinarySearchTree {
 	}
 	
 	public String find(int key){
-		return searchR(key, rootNode).value;
+		return search(key, rootNode).value;
 	}
 	
-	public Node search(Node node, int key){
+	public String findParent(int key){
+		return searchR(key, rootNode).parent.value;
+	}
+	
+	public Node search(int key,Node node){
 		
 		Node currentNode = node;
 		
@@ -79,9 +88,57 @@ public class BinarySearchTree {
 		return null; 
 	}
 	
+	public int findSuccesor(int key){
+		
+		Node tempNode = searchR(key, rootNode); 
+		if(tempNode.rightChild != null){
+			return findMin(tempNode.rightChild).key;
+		}else{
+			Node parent = tempNode.parent;
+			while(parent != null){
+				if(parent.leftChild == tempNode){
+					return parent.key; 
+				}
+				tempNode = parent;
+				parent = parent.parent; 
+			}
+			return -1; 
+		}
+	
+	}
+	
+	public Node findMin(Node node){
+		
+		while(node.leftChild != null){
+			node = node.leftChild; 
+		}
+		return node; 
+	}
+	
+	public Node findMinR(Node node){
+		
+		if(node.leftChild == null){
+			findMinR(node.leftChild); 
+		}
+		return node; 
+	}
+	
+	public int findSuccesor(int key, Node node){
+		
+		if(node.rightChild != null){
+			Node rightTree = node.rightChild ; 
+			
+		}
+
+		
+		return 0; 
+	}
+	
+	
 	public Node getRoot(){
 		return rootNode; 
 	}
+	
 	private class Node{
 		public int key; 
 		public Node leftChild;
