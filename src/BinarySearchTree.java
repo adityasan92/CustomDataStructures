@@ -12,13 +12,13 @@ public class BinarySearchTree {
 		bt.insert(5,"game");
 		bt.insert(20,"game");
 		bt.insert(8,"game");
-		//bt.insert(4,"four");
-		//bt.insert(2,"four");
+		bt.insert(4,"four");
+		bt.insert(2,"four");
 		//Node rootNode = bt.getRoot();
 		//String searchValue = bt.findParent(15);
 		int succesor = bt.findSuccesor(6);
 		//System.out.println(succesor);
-		System.out.println(bt.isBalanced());
+		System.out.println(bt.isBst());
 	}
 	
 	public Node insertR(Node root, int key, String value){
@@ -176,18 +176,21 @@ public class BinarySearchTree {
 	
 	}
 	
-	/*public boolean isBst(){
+	public boolean isBst(){
 		
-		return isBst(rootNode);
+		return isBst(rootNode,-1,-1);
 	}
 	
-	private boolean isBst(Node root){
+	private boolean isBst(Node node, int min, int max){
 		
-		if(root.rightChild == null){
-			return root;
+		if(node == null){
+			return true;
 		}
+		if(min != -1 && (node.key < min)) return false; 
+		if(max != -1 && (node.key > max)) return false; 
+		return isBst(node.leftChild,min, node.key) && isBst(node.rightChild,node.key,max);
 		
-	}*/
+	}
 	
 	public void inOrder(){
 		inOrder(rootNode);
