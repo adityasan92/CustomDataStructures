@@ -1,3 +1,4 @@
+//import BinarySearchTree.Node;
 
 public class BinarySearchTree {
 
@@ -18,7 +19,14 @@ public class BinarySearchTree {
 		//String searchValue = bt.findParent(15);
 		int succesor = bt.findSuccesor(6);
 		//System.out.println(succesor);
-		System.out.println(bt.isBst());
+		//System.out.println(bt.isBst());
+		
+		BinarySearchTree bst = new BinarySearchTree();
+		int[] array = {0,1,2,3,4,5,6,7,8,9};
+		
+		bst.minTree(array);
+		bst.isBst();
+		System.out.println(bst.isBst());
 	}
 	
 	public Node insertR(Node root, int key, String value){
@@ -174,6 +182,31 @@ public class BinarySearchTree {
 			return Math.max(leftHeight, rightHeight)+ 1; 
 		}
 	
+	}
+	
+	public void minTree(int[] arr){
+		
+		int length = arr.length; 
+		
+		minTree(arr,0,length -1); 
+	
+	}
+	
+	private Node minTree(int[] arr, int start, int end){
+		if(end<start){
+			return null; 
+		}
+		
+		int mid = (start + end)/2; 
+		
+		Node n = new Node();
+		n.key = mid; 
+		if(rootNode ==null){
+			rootNode =n;
+		}
+		n.leftChild = minTree(arr, start, mid -1);
+		n.rightChild = minTree(arr,mid+1,end);
+		return n; 
 	}
 	
 	public boolean isBst(){
