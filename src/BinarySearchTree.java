@@ -6,7 +6,7 @@ public class BinarySearchTree {
 	
 	public static void main(String[] args){
 		BinarySearchTree bt = new BinarySearchTree();
-		bt.insert(12,"Hello World");
+		/*bt.insert(12,"Hello World");
 		bt.insert(6,"I am god");
 		bt.insert(16,"New World");
 		bt.insert(3,"ok game");
@@ -14,7 +14,7 @@ public class BinarySearchTree {
 		bt.insert(20,"game");
 		bt.insert(8,"game");
 		bt.insert(4,"four");
-		bt.insert(2,"four");
+		bt.insert(2,"four");*/
 		//Node rootNode = bt.getRoot();
 		//String searchValue = bt.findParent(15);
 		int succesor = bt.findSuccesor(6);
