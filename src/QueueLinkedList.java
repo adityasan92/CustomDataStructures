@@ -12,6 +12,11 @@ public class QueueLinkedList<E> {
 		queue.enqueue(9);
 		queue.enqueue(10);
 		queue.dequeue();
+		queue.dequeue();
+		queue.dequeue();
+		queue.dequeue();
+		queue.dequeue();
+		
 		queue.print();
 		
 	}
