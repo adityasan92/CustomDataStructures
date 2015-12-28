@@ -29,6 +29,35 @@ public class BinarySearchTree {
 		System.out.println(bst.isBst());
 	}
 	
+	
+	public void insertBal(int data) { //Insert method checking to see where to put the nodes
+	    Node node1 = new Node();
+	    node1.key = data; 
+	    if (rootNode == null) { 
+	    	rootNode = node1; 
+	    } 
+	    else{
+	    	Node parIns = rootNode;//Parent
+	    	Node insNode = rootNode;//Insertion Node
+
+	      while(insNode != null){
+	        parIns = insNode;
+
+	        if(data < insNode.key){//If the data is less than the data coming in place it on the left
+	          insNode = insNode.leftChild;
+	        }else{//Place it on the right
+	          insNode = insNode.rightChild;
+	        }
+	      }//Searching where to put the node
+
+	      if(data < parIns.key){
+	        parIns.leftChild = node1;
+	      }else{
+	    	  parIns.rightChild = node1;
+	      }
+
+	    }
+	  }
 	public Node insertR(Node root, int key, String value){
 		Node news; 
 		if(root == null){
